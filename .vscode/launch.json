@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "args": [ "/mnt/c/sites/photos/me/aksHalloween1980.jpg" ],
+      "args": [ "/mnt/c/sites/photos/me/bestPhotoOfMike.png" ],
       "debugPort": "0",
       "env": {"VO_DEBUGGING": true},
       "name": "Debug describe with rdbg",

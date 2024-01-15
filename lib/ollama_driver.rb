@@ -29,6 +29,7 @@ class OllamaDriver
     @timeout = timeout
   end
 
+  # You need to choose a model that supports images, like LLaVA or bakllava
   def describe_image(image_filename)
     @client = Ollama.new(
       credentials: { address: @address },
