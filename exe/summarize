@@ -1,56 +1,8 @@
-
 #!/usr/local/bin/ruby
 
-# Uses the OpenAI GPT-3 API for Ruby to summarize a document.
-#
-# Adjust the max_tokens and temperature parameters based on your preferences.
-# Remember to check the latest OpenAI API documentation for any updates or changes.
-# If there's a GPT-4 API available, you would need to adapt the code accordingly.
+require_relative '../lib/chatgpt'
 
-def gem_installed?(name)
-  specs = Gem::Specification.find_all_by_name name
-  !specs.empty?
-end
+ChatGPT.help 'Error: file name must be specified' if ARGV.empty?
+ChatGPT.help 'Error: invalid syntax' if ARGV.length != 1
 
-`gem install json`     unless gem_installed? 'json'
-`gem install net-http` unless gem_installed? 'net-http'
-
-require 'json'
-require 'net/http'
-
-def help(msg)
-  puts msg if msg
-  progname = File.basename $PROGRAM_NAME
-  puts <<~END_MSG
-    #{progname} - Use the OpenAI GPT-3 API for Ruby to summarize a document
-    Usage: #{progname} FILENAME
-  END_MSG
-  exit 1
-end
-
-api_key = ENV['OPEN_API_KEY'] # rubocop:disable Style/FetchEnvVar
-abort 'Error: the OPEN_API_KEY environment variable is not defined.' unless api_key
-
-help 'Error: file name must be specified' if ARGV.empty?
-help 'Error: invalid syntax' if ARGV.length != 1
-document = File.read ARGV[0]
-
-params = {
-  prompt:      document,
-  max_tokens:  150, # Adjust the max_tokens parameter based on your desired summary length
-  temperature: 0.8, # Adjust the temperature parameter for more controlled or creative outputs
-}
-
-endpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions'
-json_params = params.to_json
-uri = URI(endpoint)
-http = Net::HTTP.new(uri.host, uri.port)
-http.use_ssl = true
-
-request = Net::HTTP::Post.new(uri.path,
-                              { 'Content-Type'  => 'application/json',
-                                'Authorization' => "Bearer #{api_key}" })
-request.body = json_params
-response = http.request(request)
-result = JSON.parse(response.body)
-puts result['choices'][0]['text']
+ChatGPT.new.summarize ARGV[0]

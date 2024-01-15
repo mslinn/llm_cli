@@ -4,10 +4,12 @@ Gem::Specification.new do |spec|
   host = 'https://github.com/mslinn/llm_util'
 
   spec.authors               = ['Mike Slinn']
+  spec.bindir                = 'exe'
   spec.description           = <<~END_DESC
     LlmUtil is a script front-end for large language models that are managed and run by Ollama.
   END_DESC
   spec.email                 = ['mslinn@mslinn.com']
+  spec.executables           = %w[summarize]
   spec.files                 = Dir['.rubocop.yml', 'LICENSE.*', 'Rakefile', '{lib,spec}/**/*', '*.gemspec', '*.md']
   spec.homepage              = 'https://github.com/mslinn/llm_util'
   spec.license               = 'MIT'
@@ -29,5 +31,8 @@ Gem::Specification.new do |spec|
   spec.summary               = 'LlmUtil is a script front-end for large language models that are managed and run by Ollama.'
   spec.version               = LlmUtil::VERSION
 
+  spec.add_dependency 'colorator'
+  spec.add_dependency 'json'
+  spec.add_dependency 'net-http'
   spec.add_dependency 'ollama-ai'
 end

@@ -4,5 +4,3 @@ require_relative 'llm_util/version'
 Dir[File.join(__dir__, '*.rb')].each do |file|
   require file unless file.end_with?('/llm_util.rb')
 end
-
-# Write the code for your gem here
