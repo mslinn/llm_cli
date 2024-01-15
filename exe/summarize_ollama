@@ -1,8 +1,8 @@
 #!/usr/local/bin/ruby
 
-require_relative '../lib/chatgpt'
+require_relative '../lib/ollama_driver'
 
-ChatGPT.help 'Error: file name must be specified' if ARGV.empty?
-ChatGPT.help 'Error: invalid syntax' if ARGV.length != 1
+OllamaDriver.help 'Error: file name must be specified' if ARGV.empty?
+OllamaDriver.help 'Error: invalid syntax' if ARGV.length != 1
 
-ChatGPT.new.summarize ARGV[0]
+OllamaDriver.new.summarize ARGV[0]

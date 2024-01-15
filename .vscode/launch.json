@@ -6,6 +6,14 @@
   "configurations": [
     {
       "args": [ "README.md" ],
+      "debugPort": "0",
+      "name": "Debug summarize_ollama with rdbg",
+      "script": "exe/summarize_ollama",
+      "request": "launch",
+      "type": "rdbg",
+      "useBundler": true,
+    },    {
+      "args": [ "README.md" ],
       "env": {"OPEN_API_KEY": "asdf"},
       "debugPort": "0",
       "name": "Debug summarize_chatgpt with rdbg",

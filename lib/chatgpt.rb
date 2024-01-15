@@ -23,7 +23,7 @@ class ChatGPT
 
   # @param max_tokens controls desired summary length
   # @param temperature control creativity
-  def initialize(max_tokens = 150, temperature = 0.8)
+  def initialize(max_tokens: 150, temperature: 0.8)
     @api_key = ENV['OPEN_API_KEY'] # rubocop:disable Style/FetchEnvVar
     abort 'Error: the OPEN_API_KEY environment variable is not defined.' unless @api_key
 
