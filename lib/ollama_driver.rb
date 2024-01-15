@@ -30,6 +30,7 @@ class OllamaDriver
   end
 
   # You need to choose a model that supports images, like LLaVA or bakllava
+  # ollama pull llava:13b
   def describe_image(image_filename)
     @client = Ollama.new(
       credentials: { address: @address },
