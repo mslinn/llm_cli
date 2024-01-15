@@ -5,16 +5,28 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "args": [ "/mnt/c/sites/photos/me/aksHalloween1980.jpg" ],
+      "debugPort": "0",
+      "env": {"VO_DEBUGGING": true},
+      "name": "Debug describe with rdbg",
+      "script": "exe/describe",
+      "request": "launch",
+      "type": "rdbg",
+      "useBundler": true,
+    },
+    {
       "args": [ "README.md" ],
       "debugPort": "0",
+      "env": {"VO_DEBUGGING": true},
       "name": "Debug summarize_ollama with rdbg",
       "script": "exe/summarize_ollama",
       "request": "launch",
       "type": "rdbg",
       "useBundler": true,
-    },    {
+    },
+    {
       "args": [ "README.md" ],
-      "env": {"OPEN_API_KEY": "asdf"},
+      "env": {"OPEN_API_KEY": "asdf", "VO_DEBUGGING": true},
       "debugPort": "0",
       "name": "Debug summarize_chatgpt with rdbg",
       "script": "exe/summarize_chatgpt",

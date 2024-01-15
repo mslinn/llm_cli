@@ -1,8 +1,12 @@
 #!/usr/local/bin/ruby
 
-require_relative '../lib/ollama_driver'
+if ENV['VO_DEBUGGING']
+  require_relative '../lib/llm_util'
+else
+  require 'llm_util'
+end
 
 OllamaDriver.help 'Error: file name must be specified' if ARGV.empty?
 OllamaDriver.help 'Error: invalid syntax' if ARGV.length != 1
 
-OllamaDriver.new(timeout: 5*60).summarize ARGV[0]
+OllamaDriver.new(timeout: 5*60).describe_image ARGV[0]

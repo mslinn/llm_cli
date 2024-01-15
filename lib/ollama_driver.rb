@@ -1,3 +1,4 @@
+require 'base64'
 require 'colorator'
 require 'json'
 require 'net/http'
@@ -17,13 +18,34 @@ class OllamaDriver
 
   # @param temperature control creativity
   def initialize(
-    address: 'http://localhost:11434',
-    model: 'samantha-mistral',
-    temperature: 0.8
+    address:     'http://localhost:11434',
+    model:       'samantha-mistral',
+    temperature: 0.8,
+    timeout:     60
   )
     @address = address
     @model = model
     @temperature = temperature
+    @timeout = timeout
+  end
+
+  def describe_image(image_filename)
+    @client = Ollama.new(
+      credentials: { address: @address },
+      options:     {
+        server_sent_events: true,
+        temperature:        @temperature,
+        connection:         { request: { timeout: @timeout, read_timeout: @timeout } },
+      }
+    )
+    result = @client.generate(
+      {
+        model:  @model,
+        prompt: 'Please describe this image.',
+        images: [Base64.strict_encode64(File.read(image_filename))],
+      }
+    )
+    puts result.map { |x| x['response'] }.join
   end
 
   def summarize(filename)
@@ -32,6 +54,7 @@ class OllamaDriver
       options:     {
         server_sent_events: false,
         temperature:        @temperature,
+        connection:         { request: { timeout: @timeout, read_timeout: @timeout } },
       }
     )
     result = @client.generate(
