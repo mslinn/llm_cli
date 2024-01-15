@@ -5,8 +5,7 @@ Gem::Specification.new do |spec|
 
   spec.authors               = ['Mike Slinn']
   spec.description           = <<~END_DESC
-    Write a longer description of the gem.
-    Use as many lines as you like.
+    LlmUtil is a script front-end for large language models that are managed and run by Ollama.
   END_DESC
   spec.email                 = ['mslinn@mslinn.com']
   spec.files                 = Dir['.rubocop.yml', 'LICENSE.*', 'Rakefile', '{lib,spec}/**/*', '*.gemspec', '*.md']
@@ -26,7 +25,9 @@ Gem::Specification.new do |spec|
 
   END_MESSAGE
   spec.require_paths         = ['lib']
-  spec.required_ruby_version = '>= 3.1.0'
-  spec.summary               = 'Write summary of what the gem is for'
+  spec.required_ruby_version = '>= 3.0.0'
+  spec.summary               = 'LlmUtil is a script front-end for large language models that are managed and run by Ollama.'
   spec.version               = LlmUtil::VERSION
+
+  spec.add_dependency 'ollama-ai'
 end

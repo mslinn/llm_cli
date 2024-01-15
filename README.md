@@ -1,6 +1,6 @@
 # `Llm_util` [![Gem Version](https://badge.fury.io/rb/llm_util.svg)](https://badge.fury.io/rb/llm_util)
 
-Description of LlmUtil
+LlmUtil is a script front-end for large language models that are managed and run by [Ollama](https://ollama.ai/).
 
 
 ## Installation
