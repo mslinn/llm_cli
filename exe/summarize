@@ -38,7 +38,7 @@ document = File.read ARGV[0]
 params = {
   prompt:      document,
   max_tokens:  150, # Adjust the max_tokens parameter based on your desired summary length
-  temperature: 0.7, # Adjust the temperature parameter for more controlled or creative outputs
+  temperature: 0.8, # Adjust the temperature parameter for more controlled or creative outputs
 }
 
 endpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions'
