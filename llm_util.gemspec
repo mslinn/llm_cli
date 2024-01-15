@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
     LlmUtil is a script front-end for large language models that are managed and run by Ollama.
   END_DESC
   spec.email                 = ['mslinn@mslinn.com']
-  spec.executables           = %w[summarize]
+  spec.executables           = %w[summarize_chatgpt summarize_ollama]
   spec.files                 = Dir['.rubocop.yml', 'LICENSE.*', 'Rakefile', '{lib,spec}/**/*', '*.gemspec', '*.md']
   spec.homepage              = 'https://github.com/mslinn/llm_util'
   spec.license               = 'MIT'

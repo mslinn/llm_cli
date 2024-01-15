@@ -1,0 +1,8 @@
+#!/usr/local/bin/ruby
+
+require_relative '../lib/chatgpt'
+
+ChatGPT.help 'Error: file name must be specified' if ARGV.empty?
+ChatGPT.help 'Error: invalid syntax' if ARGV.length != 1
+
+ChatGPT.new.summarize ARGV[0]

@@ -5,10 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "args": [],
+      "args": [ "README.md" ],
+      "env": {"OPEN_API_KEY": "asdf"},
       "debugPort": "0",
-      "name": "Debug summarize with rdbg",
-      "script": "exe/summarize",
+      "name": "Debug summarize_chatgpt with rdbg",
+      "script": "exe/summarize_chatgpt",
       "request": "launch",
       "type": "rdbg",
       "useBundler": true,

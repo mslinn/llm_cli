@@ -51,6 +51,10 @@ class ChatGPT
     request.body = json_params
     response     = http.request request
     result       = JSON.parse response.body
+    if response.code.to_i >= 400
+      puts "Error #{response.code} (#{response.message}) from #{ENDPOINT}"
+      exit 1
+    end
     puts result['choices'][0]['text']
   end
 end
