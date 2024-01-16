@@ -91,6 +91,18 @@ llama2:70b              e7f6c06ffef4    38 GB   27 hours ago
 llama2-uncensored:70b   bdd0ec2f5ec5    38 GB   27 hours ago
 llava:13b               e3b7997801dc    8.0 GB  3 hours ago
 samantha-mistral:latest f7c8c9be1da0    4.1 GB  26 hours ago
+
+For example,
+to describe the image in yomama.jpg,
+and use the llava:13b model,
+and wait for the result for up to 10 minutes,
+type:
+
+describe yomama.jpg -m llava:13b -t 600
+
+You can mix the options and the filename can be provided in any order:
+
+describe -m llava:13b -t 600 yomama.jpg
 ```
 
 ```shell
