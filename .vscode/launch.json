@@ -7,7 +7,7 @@
     {
       "args": [
         "-m", "llava:13b",
-        "-t", "60",
+        "-t", "10",
         "/mnt/c/sites/photos/me/bestPhotoOfMike.png"
       ],
       "debugPort": "0",

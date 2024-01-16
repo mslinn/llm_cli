@@ -1,5 +1,6 @@
 require 'base64'
 require 'colorator'
+require 'io/console'
 require 'json'
 require 'net/http'
 require 'ollama-ai'
@@ -11,13 +12,15 @@ class OllamaDriver
     loglevel:    'info',
     model:       'samantha-mistral',
     temperature: 0.8,
-    timeout:     60
+    timeout:     60,
+    width:       IO.console.winsize.last
   )
     @address = address
     @loglevel = loglevel
     @model = model
     @temperature = temperature
     @timeout = timeout
+    @width = width
   end
 
   # You need to choose a model that supports images, like LLaVA or bakllava
@@ -38,7 +41,10 @@ class OllamaDriver
         images: [Base64.strict_encode64(File.read(image_filename))],
       }
     )
-    puts result.map { |x| x['response'] }.join
+    text = result.map { |x| x['response'] }.join
+    puts OllamaDriver.wrap text, @width
+  rescue Ollama::Errors::RequestError => e
+    puts e.request.wrapped_exception.class.name.red
   end
 
   def summarize(filename)
