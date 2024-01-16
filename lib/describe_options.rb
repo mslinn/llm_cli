@@ -13,10 +13,10 @@ class OllamaDriver
 
       OPTIONS:
         -h          Generate this message
-        -l LOGLEVEL One of: #{LOGLEVEL.join ', '}"
+        -l LOGLEVEL One of: #{LOGLEVEL.join ', '} (default: info)
         -m MODEL    Installed models are listed below
-        -t SECONDS  How long to wait for a response from LLM server
-        -w WIDTH    Width of output text, in characters
+        -t SECONDS  How long to wait for a response from LLM server (default: 60)
+        -w WIDTH    Width of output text, in characters (default: console width)
 
       See: https://mslinn.com/blog/2024/01/14/ollama.html
 
