@@ -17,6 +17,7 @@ class OllamaDriver
         -m MODEL    Installed models are listed below
         -t SECONDS  How long to wait for a response from LLM server (default: 60)
         -w WIDTH    Width of output text, in characters (default: console width)
+                    Set this value to 0 to suppress wrapping.
 
       See: https://mslinn.com/blog/2024/01/14/ollama.html
 

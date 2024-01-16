@@ -42,7 +42,7 @@ class OllamaDriver
       }
     )
     text = result.map { |x| x['response'] }.join.strip
-    puts OllamaDriver.wrap text, @width
+    puts @width.positive? ? OllamaDriver.wrap(text, @width) : text
   rescue Ollama::Errors::RequestError => e
     puts e.request.wrapped_exception.class.name.red
   end
