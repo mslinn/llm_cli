@@ -32,6 +32,8 @@ Gem::Specification.new do |spec|
   spec.version               = LlmCli::VERSION
 
   spec.add_dependency 'colorator'
+  spec.add_dependency 'facets'
+  spec.add_dependency 'humanize'
   spec.add_dependency 'json'
   spec.add_dependency 'net-http'
   spec.add_dependency 'ollama-ai'

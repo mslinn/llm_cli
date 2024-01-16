@@ -17,6 +17,9 @@ Gemspec/DeprecatedAttributeAssignment:
 Gemspec/RequireMFA:
   Enabled: false
 
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
 Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
@@ -53,6 +56,9 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/StringConcatenation:
+  Mode: conservative
 
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
