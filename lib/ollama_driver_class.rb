@@ -1,3 +1,4 @@
+require 'date'
 require 'facets/string/titlecase'
 require 'humanize'
 
@@ -74,7 +75,15 @@ class OllamaDriver
     field_names.each do |field_name|
       column_values << models.map do |model|
         value = model[field_name]
-        field_name == 'size' ? as_size(value) : value
+        case field_name
+        when 'modified_at'
+          dt = DateTime.parse value
+          dt.strftime '%F %T'
+        when 'size'
+          as_size(value)
+        else
+          value
+        end
       end
     end
     digest_names.each do |digest_name|
