@@ -18,10 +18,7 @@ class OllamaDriver
       end
     end.order!(into: options)
     help "Invalid verbosity value (#{options[:verbose]}), must be one of one of: #{VERBOSITY.join ', '}." if options[:verbose] && !options[:verbose] in VERBOSITY
-    unless model_exist? options[:model]
-      help "Specified model (#{options[:model]}) does not exist.\n" +
-           "Available models are:\n".green + list
-    end
+    help "Specified model (#{options[:model]}) does not exist.\n" unless model_exist? options[:model]
     options
   end
 end

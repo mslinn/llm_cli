@@ -48,7 +48,7 @@ class OllamaDriver
       See: https://mslinn.com/blog/2024/01/14/ollama.html
 
       #{'Installed models are:'.green}
-      #{`ollama list`.chomp}
+      #{list.yellow}
 
       For example,
       to describe the image in yomama.jpg,
