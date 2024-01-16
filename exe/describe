@@ -1,18 +1,15 @@
 #!/usr/local/bin/ruby
 
 if ENV['VO_DEBUGGING']
-  require_relative '../lib/llm_util'
+  require_relative '../lib/llm_cli'
 else
-  require 'llm_util'
+  require 'llm_cli'
 end
 
 def main
   OllamaDriver.help 'Error: file name must be specified' if ARGV.empty?
-  OllamaDriver.help 'Error: invalid syntax' if ARGV.length != 1
-
-  # Default should be: model: 'llava', timeout: 5*60
   options = OllamaDriver.parse_options
-
+  OllamaDriver.help 'Error: invalid syntax' if ARGV.length != 1
   OllamaDriver.new(options).describe_image ARGV[0]
 end
 

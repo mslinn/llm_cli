@@ -1,6 +1,6 @@
-# `Llm_util` [![Gem Version](https://badge.fury.io/rb/llm_util.svg)](https://badge.fury.io/rb/llm_util)
+# `llm_cli` [![Gem Version](https://badge.fury.io/rb/llm_cli.svg)](https://badge.fury.io/rb/llm_cli)
 
-LlmUtil is a script front-end for large language models that are managed and run by [Ollama](https://ollama.ai/) and OpenAI.
+LlmCli is a script front-end for large language models that are managed and run by [Ollama](https://ollama.ai/) and OpenAI.
 
 The following command-line program are installed:
 
@@ -33,7 +33,7 @@ $ bundle exec rake install
 If you just want to run the command-line programs, type:
 
 ```shell
-$ gem install llm_util
+$ gem install llm_cli
 ```
 
 
@@ -42,7 +42,7 @@ $ gem install llm_util
 To make an application that uses this gem, add the follwoing line to your application&rsquo;s `Gemfile`:
 
 ```ruby
-$ gem 'llm_util'
+$ gem 'llm_cli'
 ```
 
 And then execute:
@@ -57,7 +57,7 @@ $ bundle
 To make a gem that uses this gem as a dependency, add the following to your Gem&rsquo;s `.gemspec`:
 
 ```ruby
-spec.add_dependency 'llm_util'
+spec.add_dependency 'llm_cli'
 ```
 
 And then execute:
@@ -171,7 +171,7 @@ $ bundle exec rake release
 
 ## Contributing
 
-Bug reports and pull requests are welcome at https://github.com/mslinn/llm_util.
+Bug reports and pull requests are welcome at https://github.com/mslinn/llm_cli.
 
 
 ## License

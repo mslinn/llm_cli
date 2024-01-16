@@ -24,8 +24,8 @@ end
 
 task publish: [:build] do
   $VERBOSE = nil
-  load 'llm_util/version.rb'
-  system "gem push pkg/llm_util-#{LlmUtil::VERSION}.gem"
+  load 'llm_cli/version.rb'
+  system "gem push pkg/llm_cli-#{LlmCli::VERSION}.gem"
 end
 
 desc 'Bump patch version, create git tag, build the gem and release to geminabox (default)'

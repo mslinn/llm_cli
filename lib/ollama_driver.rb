@@ -4,7 +4,7 @@ require 'json'
 require 'net/http'
 require 'ollama-ai'
 
-class OllamaDriver
+class OllamaDriver # rubocop:disable Metrics/ClassLength
   def self.help(msg = nil)
     puts "#{msg}\n".red if msg
     progname = File.basename $PROGRAM_NAME
@@ -38,6 +38,46 @@ class OllamaDriver
     END_MSG
     puts msg
     exit 1
+  end
+
+  # [{ 'name' => 'llama2:latest',
+  # 'modified_at' => '2024-01-06T15:06:23.6349195-03:00',
+  # 'size' => 3_826_793_677,
+  # 'digest' =>
+  # '78e26419b4469263f75331927a00a0284ef6544c1975b826b15abdaef17bb962',
+  # 'details' =>
+  # { 'format' => 'gguf',
+  #   'family' => 'llama',
+  #   'families' => ['llama'],
+  #   'parameter_size' => '7B',
+  #   'quantization_level' => 'Q4_0' } }
+  # ]
+  def self.model_exist?(model_name)
+    client = Ollama.new(credentials: { address: @address })
+    client.tags.find do |model|
+      return true if model['name'] == model_name
+    end
+    false
+  end
+
+  # @return length of widest instance of field_name in the array of hashes
+  def self.widest(hash_array, field_name)
+    lengths = hash_array.map { |row| row[field_name] }
+    lengths.max
+  end
+
+  def self.list
+    result = ''
+    client = Ollama.new(credentials: { address: @address })
+    client.tags.map do |tags|
+      field_names = %w[name modified_at size]
+      widths = field_names.map { |name| widest(tags['models'], name) }
+      field_names.zip(widths).each do |field_name, width|
+        result += ljust(row[field_name], width)
+      end
+      result += "\n"
+    end
+    result
   end
 
   # @param temperature control creativity

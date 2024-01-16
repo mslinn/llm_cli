@@ -29,7 +29,7 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Exclude:
-    - llm_util.gemspec
+    - llm_cli.gemspec
   Max: 30
 
 Metrics/CyclomaticComplexity:

@@ -10,7 +10,7 @@ class OllamaDriver
       @parser = parser
 
       parser.on('-l', '--loglevel LOGLEVEL', Integer, "Logging level (#{VERBOSITY.join ', '})")
-      parser.on('-m', '--model MODEL', 'Overwrite output file if present')
+      parser.on('-m', '--model MODEL', 'Specify ollama model to use')
       parser.on('-t', '--timeout TIMEOUT', Integer, "Seconds to wait for response (1..#{options[:timeout]})")
 
       parser.on_tail('-h', '--help', 'Show this message') do
@@ -18,10 +18,9 @@ class OllamaDriver
       end
     end.order!(into: options)
     help "Invalid verbosity value (#{options[:verbose]}), must be one of one of: #{VERBOSITY.join ', '}." if options[:verbose] && !options[:verbose] in VERBOSITY
-    if options[:shake].negative? || options[:shake] > 10
+    unless model_exist? options[:model]
       help "Specified model (#{options[:model]}) does not exist.\n" +
-           "Available models are:\n".green +
-           `ollama list`.chomp
+           "Available models are:\n".green + list
     end
     options
   end

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# The llm_util gem dependencies are defined in llm_util.gemspec
+# The llm_cli gem dependencies are defined in llm_cli.gemspec
 gemspec
 
 group :test, :development do

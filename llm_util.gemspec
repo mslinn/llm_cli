@@ -1,17 +1,17 @@
-require_relative 'lib/llm_util/version'
+require_relative 'lib/llm_cli/version'
 
 Gem::Specification.new do |spec|
-  host = 'https://github.com/mslinn/llm_util'
+  host = 'https://github.com/mslinn/llm_cli'
 
   spec.authors               = ['Mike Slinn']
   spec.bindir                = 'exe'
   spec.description           = <<~END_DESC
-    LlmUtil is a script front-end for large language models that are managed and run by Ollama.
+    LlmCli is a script front-end for large language models that are managed and run by Ollama.
   END_DESC
   spec.email                 = ['mslinn@mslinn.com']
   spec.executables           = %w[describe summarize_chatgpt summarize_ollama]
   spec.files                 = Dir['.rubocop.yml', 'LICENSE.*', 'Rakefile', '{lib,spec}/**/*', '*.gemspec', '*.md']
-  spec.homepage              = 'https://github.com/mslinn/llm_util'
+  spec.homepage              = 'https://github.com/mslinn/llm_cli'
   spec.license               = 'MIT'
   spec.metadata = {
     'allowed_push_host' => 'https://rubygems.org',
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
     'homepage_uri'      => spec.homepage,
     'source_code_uri'   => host,
   }
-  spec.name                 = 'llm_util'
+  spec.name                 = 'llm_cli'
   spec.post_install_message = <<~END_MESSAGE
 
     Thanks for installing #{spec.name}!
@@ -28,8 +28,8 @@ Gem::Specification.new do |spec|
   END_MESSAGE
   spec.require_paths         = ['lib']
   spec.required_ruby_version = '>= 3.0.0'
-  spec.summary               = 'LlmUtil is a script front-end for large language models that are managed and run by Ollama.'
-  spec.version               = LlmUtil::VERSION
+  spec.summary               = 'LLM CLI is a script front-end for large language models that are managed and run by Ollama and Open AI.'
+  spec.version               = LlmCli::VERSION
 
   spec.add_dependency 'colorator'
   spec.add_dependency 'json'
