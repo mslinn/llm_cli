@@ -6,7 +6,14 @@ else
   require 'llm_util'
 end
 
-OllamaDriver.help 'Error: file name must be specified' if ARGV.empty?
-OllamaDriver.help 'Error: invalid syntax' if ARGV.length != 1
+def main
+  OllamaDriver.help 'Error: file name must be specified' if ARGV.empty?
+  OllamaDriver.help 'Error: invalid syntax' if ARGV.length != 1
 
-OllamaDriver.new(model: 'llava', timeout: 5*60).describe_image ARGV[0]
+  # Default should be: model: 'llava', timeout: 5*60
+  options = OllamaDriver.parse_options
+
+  OllamaDriver.new(options).describe_image ARGV[0]
+end
+
+main

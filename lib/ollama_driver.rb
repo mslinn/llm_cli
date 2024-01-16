@@ -5,12 +5,18 @@ require 'net/http'
 require 'ollama-ai'
 
 class OllamaDriver
-  def self.help(msg)
+  def self.help(msg = nil)
     puts "#{msg}\n".red if msg
     progname = File.basename $PROGRAM_NAME
     msg = <<~END_MSG
-      #{progname} - Use an Ollama model to summarize a document
+      #{"#{progname} - Use an Ollama model to summarize a document".green}
+
       Usage: #{progname} FILENAME
+
+      See: https://mslinn.com/blog/2024/01/14/ollama.html
+
+      #{'Available models are:'.green}
+      #{`ollama list`.chomp}
     END_MSG
     puts msg
     exit 1

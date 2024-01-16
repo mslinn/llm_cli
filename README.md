@@ -94,6 +94,15 @@ $ bin/setup
 
 You should do the above before running Visual Studio Code.
 
+You can run and debug the code under test instead of the most recently installed version
+by setting an environment variable called `VO_DEBUGGING` to any truthy value.
+For example,
+you could generate the help message from the contents of the `exe/` and `lib/` directories like this:
+
+```shell
+VO_DEBUGGING=true ruby exe/describe_ollama -h
+```
+
 
 ### Run the Tests
 
