@@ -1,16 +1,14 @@
 # `llm_cli` [![Gem Version](https://badge.fury.io/rb/llm_cli.svg)](https://badge.fury.io/rb/llm_cli)
 
-LlmCli is a script front-end for large language models that are managed and run by [Ollama](https://ollama.ai/) and OpenAI.
+**WORK IN PROGRESS**
+
+`llm_cli` is a script front-end for large language models that are managed and run by [Ollama](https://ollama.ai/) and OpenAI.
 
 The following command-line program are installed:
 
 * `describe` - describe an image using an Ollama model
 * `summarize_ollama` - summarize text using an Ollama model
 * `summarize_chatgpt` - summarize text using ChatGPT
-
-The above command-line programs use default values and do not support options yet.
-The API is more flexible, and allows you to specify the model, temperature, timeout.
-For the Ollama commands, you can also specify the URL (address) of the Ollama server.
 
 This Ruby gem requires Ruby to be installed.
 [Here](https://www.mslinn.com/ruby/1000-ruby-setup.html) are some instructions.
@@ -78,29 +76,27 @@ describe - Use an Ollama model to summarize a document
 Syntax: describe OPTIONS FILENAME
 
 OPTIONS:
-  -h Generate this message
-  -l LOGLEVEL one of: trace, debug, verbose, info, warning, error, fatal, panic, quiet
-  -m MODEL (installed models are listed below)
-  -t SECONDS how long to wait for a response from LLM server
+  -h          Generate this message
+  -l LOGLEVEL One of: trace, debug, verbose, info, warning, error, fatal, panic, quiet (default: info)
+  -m MODEL    Installed models are listed below
+  -t SECONDS  How long to wait for a response from LLM server (default: 60)
+  -w WIDTH    Width of output text, in characters (default: console width)
+              Set this value to 0 to suppress wrapping.
 
 See: https://mslinn.com/blog/2024/01/14/ollama.html
 
-Available models are:
-NAME                    ID              SIZE    MODIFIED
-llama2:70b              e7f6c06ffef4    38 GB   27 hours ago
-llama2-uncensored:70b   bdd0ec2f5ec5    38 GB   27 hours ago
-llava:13b               e3b7997801dc    8.0 GB  3 hours ago
-samantha-mistral:latest f7c8c9be1da0    4.1 GB  26 hours ago
+Installed models are:
+Name                     Modified At          Size     Format  Family  Parameter Size  Quantization Level
+llama2:70b               2024-01-14 16:53:55  36 GiB   gguf    llama   69B             Q4_0
+llama2-uncensored:70b    2024-01-14 17:16:03  36 GiB   gguf    llama   65B             Q4_0
+llava:13b                2024-01-15 16:35:25  7.5 GiB  gguf    llama   13B             Q4_0
+samantha-mistral:latest  2024-01-14 17:34:17  3.8 GiB  gguf    llama   7B              Q4_0
 
 For example,
-to describe the image in yomama.jpg,
-and use the llava:13b model,
+to use the llava:13b model,
 and wait for the result for up to 10 minutes,
+to describe the image in yomama.jpg,
 type:
-
-describe yomama.jpg -m llava:13b -t 600
-
-You can mix the options and the filename can be provided in any order:
 
 describe -m llava:13b -t 600 yomama.jpg
 ```
@@ -130,7 +126,7 @@ For example,
 you could generate the help message from the contents of the `exe/` and `lib/` directories like this:
 
 ```shell
-VO_DEBUGGING=true ruby exe/describe_ollama -h
+VO_DEBUGGING=true ruby exe/describe -h
 ```
 
 
