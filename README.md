@@ -69,10 +69,28 @@ $ bundle
 
 ## Usage
 
-To see the help information, type:
+To see the help information for the commands, do not provide them any parameters:
 
 ```shell
 $ describe
+describe - Use an Ollama model to summarize a document
+
+Syntax: describe OPTIONS FILENAME
+
+OPTIONS:
+  -h Generate this message
+  -l LOGLEVEL one of: trace, debug, verbose, info, warning, error, fatal, panic, quiet
+  -m MODEL (installed models are listed below)
+  -t SECONDS how long to wait for a response from LLM server
+
+See: https://mslinn.com/blog/2024/01/14/ollama.html
+
+Available models are:
+NAME                    ID              SIZE    MODIFIED
+llama2:70b              e7f6c06ffef4    38 GB   27 hours ago
+llama2-uncensored:70b   bdd0ec2f5ec5    38 GB   27 hours ago
+llava:13b               e3b7997801dc    8.0 GB  3 hours ago
+samantha-mistral:latest f7c8c9be1da0    4.1 GB  26 hours ago
 ```
 
 ```shell

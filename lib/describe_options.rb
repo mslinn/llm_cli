@@ -11,8 +11,7 @@ class OllamaDriver
 
       parser.on('-l', '--loglevel LOGLEVEL', Integer, "Logging level (#{VERBOSITY.join ', '})")
       parser.on('-m', '--model MODEL', 'Overwrite output file if present')
-      parser.on('-s', '--timeout TIMEOUT', Integer, "Seconds to wait for response (1..#{options[:timeout]})")
-      parser.on('-v', '--verbose VERBOSE', 'Verbose output')
+      parser.on('-t', '--timeout TIMEOUT', Integer, "Seconds to wait for response (1..#{options[:timeout]})")
 
       parser.on_tail('-h', '--help', 'Show this message') do
         help

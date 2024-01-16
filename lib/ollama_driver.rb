@@ -11,12 +11,30 @@ class OllamaDriver
     msg = <<~END_MSG
       #{"#{progname} - Use an Ollama model to summarize a document".green}
 
-      Usage: #{progname} FILENAME
+      Syntax: #{progname} OPTIONS FILENAME
+
+      OPTIONS:
+        -h Generate this message
+        -l LOGLEVEL one of: #{VERBOSITY.join ', '}
+        -m MODEL (installed models are listed below)
+        -t SECONDS how long to wait for a response from LLM server
 
       See: https://mslinn.com/blog/2024/01/14/ollama.html
 
-      #{'Available models are:'.green}
+      #{'Installed models are:'.green}
       #{`ollama list`.chomp}
+
+      For example,
+      to describe the image in yomama.jpg,
+      and use the llava:13b model,
+      and wait for the result for up to 10 minutes,
+      type:
+
+      describe yomama.jpg -m llava:13b -t 600
+
+      You can mix the options and the filename can be provided in any order:
+
+      describe -m llava:13b -t 600 yomama.jpg
     END_MSG
     puts msg
     exit 1
