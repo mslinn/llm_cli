@@ -24,14 +24,10 @@ class OllamaDriver
       #{list.yellow}
 
       For example,
-      to describe the image in yomama.jpg,
-      and use the llava:13b model,
+      to use the llava:13b model,
       and wait for the result for up to 10 minutes,
+      to describe the image in yomama.jpg,
       type:
-
-      describe yomama.jpg -m llava:13b -t 600
-
-      You can mix the options and the filename can be provided in any order:
 
       describe -m llava:13b -t 600 yomama.jpg
     END_MSG

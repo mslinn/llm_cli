@@ -41,7 +41,7 @@ class OllamaDriver
         images: [Base64.strict_encode64(File.read(image_filename))],
       }
     )
-    text = result.map { |x| x['response'] }.join
+    text = result.map { |x| x['response'] }.join.strip
     puts OllamaDriver.wrap text, @width
   rescue Ollama::Errors::RequestError => e
     puts e.request.wrapped_exception.class.name.red
