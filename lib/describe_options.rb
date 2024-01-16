@@ -4,7 +4,7 @@ class OllamaDriver
   VERBOSITY = %w[trace debug verbose info warning error fatal panic quiet].freeze
 
   def self.parse_options
-    options = { model: 'llava', timeout: 5 * 60, loglevel: 'warning', verbose: false }
+    options = { model: 'llava', timeout: 5 * 60, loglevel: 'info' }
     OptionParser.new do |parser|
       parser.program_name = File.basename __FILE__
       @parser = parser
@@ -18,9 +18,9 @@ class OllamaDriver
       end
     end.order!(into: options)
     if options[:verbose] && !options[:verbose] in VERBOSITY
-      help "Invalid verbosity value (#{options[:verbose]}), must be one of one of: #{VERBOSITY.join ', '}."
+      help "Error: Invalid verbosity value (#{options[:verbose]}), must be one of one of: #{VERBOSITY.join ', '}."
     end
-    help "Specified model (#{options[:model]}) does not exist." unless model_exist? options[:model]
+    help "Error: Specified model (#{options[:model]}) does not exist." unless model_exist? options[:model]
     options
   end
 end

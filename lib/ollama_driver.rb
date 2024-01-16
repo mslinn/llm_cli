@@ -8,11 +8,13 @@ class OllamaDriver
   # @param temperature control creativity
   def initialize(
     address:     'http://localhost:11434',
+    loglevel:    'info',
     model:       'samantha-mistral',
     temperature: 0.8,
     timeout:     60
   )
     @address = address
+    @loglevel = loglevel
     @model = model
     @temperature = temperature
     @timeout = timeout

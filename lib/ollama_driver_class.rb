@@ -109,7 +109,7 @@ class OllamaDriver
   # ]
   def self.model_exist?(model_name)
     client = Ollama.new(credentials: { address: @address })
-    client.tags.find do |model|
+    client.tags.first['models'].find do |model|
       return true if model['name'] == model_name
     end
     false

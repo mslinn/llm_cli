@@ -10,7 +10,7 @@ def main
   OllamaDriver.help 'Error: file name must be specified' if ARGV.empty?
   options = OllamaDriver.parse_options
   OllamaDriver.help 'Error: invalid syntax' if ARGV.length != 1
-  OllamaDriver.new(options).describe_image ARGV[0]
+  OllamaDriver.new(**options).describe_image ARGV[0]
 end
 
 main
