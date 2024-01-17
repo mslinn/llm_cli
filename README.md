@@ -23,6 +23,10 @@ type the following before the instructions in the next section will work:
 $ bundle exec rake install
 ```
 
+If you just want to run the command-line programs,
+then skip the next section (Installation) and read the [Usage](#usage) section,
+the the [Development](#development) section.
+
 
 ## Installation
 
@@ -126,7 +130,7 @@ For example,
 you could generate the help message from the contents of the `exe/` and `lib/` directories like this:
 
 ```shell
-VO_DEBUGGING=true ruby exe/describe -h
+VO_DEBUGGING=true ruby exe/describe
 ```
 
 
