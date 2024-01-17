@@ -4,7 +4,6 @@ require 'io/console'
 require 'json'
 require 'net/http'
 require 'ollama-ai'
-
 class OllamaDriver
   # @param temperature control creativity
   def initialize(
@@ -37,7 +36,7 @@ class OllamaDriver
     image_contents = if image_ref.start_with? 'http'
                        Net::HTTP.get(URI.parse(image_ref))
                      else
-                       File.read(image_ref)
+                       File.read image_ref
                      end
     result = @client.generate(
       {
