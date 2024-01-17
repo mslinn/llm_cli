@@ -4,10 +4,11 @@ require_relative 'llm_cli/version'
 
 def require_subdirectory(dir)
   Dir[File.join(dir, '*.rb')].each do |file|
-    require file unless file.end_with?('/llm_cli.rb')
+    require file unless file == __FILE__
   end
 end
 
+puts __FILE__
 require_subdirectory File.realpath(__dir__) # Require all Ruby files in 'lib/', except this file
 Pathname(__dir__).children.select(&:directory?).each do |directory|
   require_subdirectory directory.to_s
