@@ -31,6 +31,8 @@ class OllamaDriver
       type:
 
       describe -m llava:13b -t 600 yomama.jpg
+
+      If you do not specify a model, the list of llava models is computed, then the middle one is automatically chosen.
     END_MSG
     puts msg
     exit 1

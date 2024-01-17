@@ -25,7 +25,7 @@ class OllamaDriver
 
   # You need to choose a model that supports images, like LLaVA or bakllava
   # ollama pull llava:13b
-  def describe_image(image_filename)
+  def describe_image(image_ref)
     @client = Ollama.new(
       credentials: { address: @address },
       options:     {
@@ -34,11 +34,16 @@ class OllamaDriver
         connection:         { request: { timeout: @timeout, read_timeout: @timeout } },
       }
     )
+    image_contents = if image_ref.start_with? 'http'
+                       Net::HTTP.get(URI.parse(image_ref))
+                     else
+                       File.read(image_ref)
+                     end
     result = @client.generate(
       {
         model:  @model,
         prompt: 'Please describe this image.',
-        images: [Base64.strict_encode64(File.read(image_filename))],
+        images: [Base64.strict_encode64(image_contents)],
       }
     )
     text = result.map { |x| x['response'] }.join.strip

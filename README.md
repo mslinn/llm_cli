@@ -77,7 +77,9 @@ To see the help information for the commands, do not provide them any parameters
 $ describe
 describe - Use an Ollama model to summarize a document
 
-Syntax: describe OPTIONS FILENAME
+Syntax: describe OPTIONS FILE_REFERENCE
+
+FILE_REFERENCE could be a path to a local file, or a URL.
 
 OPTIONS:
   -h          Generate this message
@@ -96,6 +98,8 @@ llama2-uncensored:70b    2024-01-14 17:16:03  36 GiB   gguf    llama   65B      
 llava:13b                2024-01-15 16:35:25  7.5 GiB  gguf    llama   13B             Q4_0
 samantha-mistral:latest  2024-01-14 17:34:17  3.8 GiB  gguf    llama   7B              Q4_0
 
+If no model is specified, a llava model is chosen.
+
 For example,
 to use the llava:13b model,
 and wait for the result for up to 10 minutes,
@@ -103,6 +107,8 @@ to describe the image in yomama.jpg,
 type:
 
 describe -m llava:13b -t 600 yomama.jpg
+
+describe https://www.mslinn.com/images/mike/mikePersuades_500x500.webp
 ```
 
 ```shell

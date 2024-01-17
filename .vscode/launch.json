@@ -6,7 +6,7 @@
   "configurations": [
     {
       "args": [
-        "-t", "10",
+        "-t", "300",
         "/mnt/c/sites/photos/me/bestPhotoOfMike.png"
       ],
       "debugPort": "0",
