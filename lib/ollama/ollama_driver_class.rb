@@ -34,6 +34,16 @@ class OllamaDriver
     format_table(column_values).join("\n")
   end
 
+  def self.model_names
+    obtain_models.map { |model| model['name'] }
+  end
+
+  # @return middle of array of model names that start with 'llava:'
+  def self.find_llava
+    llavas = model_names.select { |name| name.start_with?('llava:') }
+    llavas[llavas.length / 2]
+  end
+
   # [{ 'name' => 'llama2:latest',
   # 'modified_at' => '2024-01-06T15:06:23.6349195-03:00',
   # 'size' => 3_826_793_677,

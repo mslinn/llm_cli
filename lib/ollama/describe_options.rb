@@ -37,10 +37,10 @@ class OllamaDriver
   end
 
   def self.parse_options
-    options = { model: 'llava', timeout: 60, loglevel: 'info', width: IO.console.winsize.last }
+    default_model = find_llava
+    options = { timeout: 60, loglevel: 'info', width: IO.console.winsize.last }
     OptionParser.new do |parser|
       parser.program_name = File.basename __FILE__
-      @parser = parser
 
       parser.on('-l', '--loglevel LOGLEVEL', Integer, "Logging level, one of #{LOGLEVEL.join ', '}. (#{options[:loglevel]})")
       parser.on('-m', '--model MODEL',       String,  "Ollama model to use (#{options[:model]})")
@@ -51,6 +51,10 @@ class OllamaDriver
         help
       end
     end.order!(into: options)
+    unless options[:model]
+      options[:model] = default_model
+      puts "No model was specified, so #{default_model} was selected."
+    end
     if options[:loglevel] && !options[:loglevel] in LOGLEVEL
       help "Error: Invalid loglevel value (#{options[:loglevel]}), must be one of one of: #{LOGLEVEL.join ', '}."
     end

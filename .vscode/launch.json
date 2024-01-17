@@ -6,6 +6,19 @@
   "configurations": [
     {
       "args": [
+        "-t", "10",
+        "/mnt/c/sites/photos/me/bestPhotoOfMike.png"
+      ],
+      "debugPort": "0",
+      "env": {"VO_DEBUGGING": true},
+      "name": "Debug describe using default model with rdbg",
+      "script": "exe/describe",
+      "request": "launch",
+      "type": "rdbg",
+      "useBundler": true,
+    },
+    {
+      "args": [
         "-m", "llava:13b",
         "-t", "10",
         "/mnt/c/sites/photos/me/bestPhotoOfMike.png"
