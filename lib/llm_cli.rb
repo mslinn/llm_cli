@@ -8,7 +8,6 @@ def require_subdirectory(dir)
   end
 end
 
-puts __FILE__
 require_subdirectory File.realpath(__dir__) # Require all Ruby files in 'lib/', except this file
 Pathname(__dir__).children.select(&:directory?).each do |directory|
   require_subdirectory directory.to_s
