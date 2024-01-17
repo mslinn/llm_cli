@@ -1,11 +1,14 @@
+require 'fileutils'
+require 'pathname'
 require_relative 'llm_cli/version'
 
-# Require all Ruby files in 'lib/', except this file
-Dir[File.join(__dir__, '*.rb')].each do |file|
-  require file unless file.end_with?('/llm_cli.rb')
+def require_subdirectory(dir)
+  Dir[File.join(dir, '*.rb')].each do |file|
+    require file unless file.end_with?('/llm_cli.rb')
+  end
 end
 
-Dir[File.join(__dir__ + '/ollama', '*.rb')].each do |file|
-  puts "requiring #{file}"
-  require file unless file.end_with?('/llm_cli.rb')
+require_subdirectory File.realpath(__dir__) # Require all Ruby files in 'lib/', except this file
+Pathname(__dir__).children.select(&:directory?).each do |directory|
+  require_subdirectory directory.to_s
 end
