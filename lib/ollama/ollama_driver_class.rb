@@ -1,7 +1,7 @@
 require 'date'
 require 'facets/string/titlecase'
 require 'humanize'
-require_relative 'text_util'
+require_relative '../util/text_util'
 
 class OllamaDriver
   extend TextUtil
